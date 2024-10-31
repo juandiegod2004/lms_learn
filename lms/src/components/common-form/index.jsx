@@ -8,14 +8,15 @@ CommonForm.propTypes = {
     formControls: PropTypes.array.isRequired,
     formData: PropTypes.object.isRequired,
     setFormData: PropTypes.func.isRequired,
+    isButtonDisabled: PropTypes.bool,
 };
 
-function CommonForm({handleSubmit, buttonText, formControls = [], formData, setFormData}) {
+function CommonForm({handleSubmit, buttonText, formControls = [], formData, setFormData, isButtonDisabled = false}) {
     return (
         <form onSubmit={handleSubmit}>  
         {/* Render form controls here*/}
         <FormControls formControls={formControls} formData={formData} setFormData={setFormData}/>
-        <Button type="submit" className="mt-5 w-full ">{buttonText || 'Submit'}</Button>
+        <Button disabled={isButtonDisabled}type="submit" className="mt-5 w-full ">{buttonText || 'Submit'}</Button>
         </form>
     );
 } 
