@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function AuthPage() {
     // Estado para controlar la pestaña activa, comienza en "signin"
     const [activeTab, setActiveTab] = useState('signin');
-    const {signInFormData, setSignInFormData,signUpFormData, setSignUpFormData, handleRegisterUser} = useContext(AuthContext);
+    const {signInFormData, setSignInFormData,signUpFormData, setSignUpFormData, handleRegisterUser, handleLoginUser} = useContext(AuthContext);
 
     // Función para manejar el cambio de pestaña
     function handleTabChange(value) {
@@ -65,6 +65,7 @@ function AuthPage() {
                                 formData={signInFormData}
                                 setFormData={setSignInFormData}
                                 isButtonDisabled={!checkIfSignInFormIsValid()}
+                                handleSubmit={handleLoginUser}
                             />
                         </CardContent>
 

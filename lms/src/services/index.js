@@ -1,10 +1,23 @@
 import axiosInstance from "@/api/axiosInstance";
 
-export async function registerService(FormData) {
+export async function registerService(formData) {
     const {data} = await axiosInstance.post('/auth/register',  {...
-        FormData,
+        formData,
         role : 'user'
     })
 
-    return data.data;
+    return data;
+}
+
+
+export async function loginService(formData) {
+    const {data} = await axiosInstance.post('/auth/login', formData)
+
+    return data;
+}
+
+export async function checkAuth() {
+    const {data} = await axiosInstance.get('/check-auth')
+
+    return data;
 }

@@ -30,9 +30,9 @@ const loginUser = async(req, res) => {
     const {userEmail, password} = req.body;
 
 
-    const checkUser = await User.findOne({userMail});
+    const checkUser = await User.findOne({userEmail});
 
-    if(!checkUser || !(await bcrypt.comapare(passsword, checkUser.password))){
+    if(!checkUser || !(await bcrypt.compare(password, checkUser.password))){
         return res.status(401).json({
             success : false,
             message : "Invalid credentials"
@@ -59,4 +59,6 @@ const loginUser = async(req, res) => {
         },
     });
 };
+
+const checkAuth = 
 module.exports = {registerUser, loginUser};
