@@ -6,6 +6,7 @@ import { AuthContext } from './context/auth-context';
 import InstructorDashboardpage from './pages/auth/instructor';
 import StudentViewCommonLayout from './components/student-view/common-layout';
 import StudentHomePage from './pages/student/home';
+import NotFoundPage from './pages/not-found';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
 
 
    </Route>
+   <Route path="*" element={<NotFoundPage />}/>
    </Routes>
   );
 }
