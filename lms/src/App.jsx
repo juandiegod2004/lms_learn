@@ -3,7 +3,7 @@ import AuthPage from './pages/auth';
 import RouteGuard from './components/route-guard';
 import { useContext } from 'react';
 import { AuthContext } from './context/auth-context';
-import InstructorDashboardpage from './pages/auth/instructor/inde';
+import InstructorDashboardpage from './pages/auth/instructor';
 import StudentViewCommonLayout from './components/student-view/common-layout';
 import StudentHomePage from './pages/student/home';
 
