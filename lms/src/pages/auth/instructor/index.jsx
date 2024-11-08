@@ -1,13 +1,15 @@
 import InstructorCourses from "@/components/instructor-view/courses";
 import InstructorDashboard from "@/components/instructor-view/dashboard";
 import { Button } from "@/components/ui/button";
+import { AuthContext } from "@/context/auth-context";
 import { Tabs, TabsContent } from "@radix-ui/react-tabs";
 import { BarChart, Book, LogOut } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 function InstructorDashboardpage() {
 
     const [activeTab, setActiveTab] = useState("dashboard")
+    const {resetCredentials} = useContext(AuthContext);
 
     const menuItems = [
         {
@@ -29,9 +31,10 @@ function InstructorDashboardpage() {
             component: null, // Esto activará la acción de cerrar sesión en el contexto.
         }
     ];
-    function handleLogout(){
-
-    }
+    function handleLogout(){ 
+        resetCredentials();
+        sessionStorage.clear();
+     }
 
     return (
         <div className="flex h-full min-h-screen bg-gray-100">
@@ -42,7 +45,9 @@ function InstructorDashboardpage() {
                         {menuItems.map((menuItem) => {
                             const Icon = menuItem.icon; // Asignamos el icono como componente aquí
                             return (
-                                <Button key={menuItem.value} className="w-full mb-2 flex items-center" onClick={menuItem.value === "logout" ?
+                                <Button key={menuItem.value} className="w-full mb-2 flex items-center" 
+                                variant={activeTab === menuItem.value ? "secondary" : "ghost"}
+                                onClick={menuItem.value === "logout" ?
 
                                     handleLogout : ()=>setActiveTab(menuItem.value)
                                 }>

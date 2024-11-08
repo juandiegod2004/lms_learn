@@ -7,6 +7,7 @@ import InstructorDashboardpage from './pages/auth/instructor';
 import StudentViewCommonLayout from './components/student-view/common-layout';
 import StudentHomePage from './pages/student/home';
 import NotFoundPage from './pages/not-found';
+import AddNewCoursePage from './pages/auth/instructor/add-new-course';
 
 function App() {
 
@@ -36,8 +37,21 @@ function App() {
           user={auth?.user}
         />
       }
-
    />
+   <Route
+      path="/instructor/create-new-course"
+      element={
+
+        <RouteGuard
+          element={
+            <AddNewCoursePage/>
+          }
+          authenticated={auth.authenticate}
+          user={auth?.user}
+        />
+      }
+   />
+   
    <Route path="/"
     element={
       <RouteGuard

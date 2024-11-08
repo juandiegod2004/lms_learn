@@ -79,13 +79,19 @@ async function checkAuthUser(){
   
 }
 
+function resetCredentials(){
+    setAuth({
+        authenticate : false,
+        user : null,
+    })
+}
     useEffect(()=>{
         checkAuthUser();
 
 
     }, []);
         return (
-        <AuthContext.Provider value={{ signInFormData, setSignInFormData,signUpFormData, setSignUpFormData, handleRegisterUser, handleLoginUser, auth}}>
+        <AuthContext.Provider value={{ signInFormData, setSignInFormData,signUpFormData, setSignUpFormData, handleRegisterUser, handleLoginUser, auth, resetCredentials}}>
             {
                 loading ? <Skeleton/> : children}
         </AuthContext.Provider>
