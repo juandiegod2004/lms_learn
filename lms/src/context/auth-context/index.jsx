@@ -26,7 +26,7 @@ export default function AuthProvider({ children }) {
         const data = await  loginService(signInFormData);
 
         if (data.success) {
-            sessionStorage.setItem('accessToken', JSON.stringify(data.data.accessToken))
+            sessionStorage.setItem("accessToken", JSON.stringify(data.data.accessToken))
             setAuth({
                 authenticate : true,
                 user : data.data.user,
@@ -63,9 +63,11 @@ async function checkAuthUser(){
         checkAuthUser();
 
 
-    }, [])
+    }, []);
+
+    console.log(auth);
     return (
-        <AuthContext.Provider value={{ signInFormData, setSignInFormData,signUpFormData, setSignUpFormData, handleRegisterUser, handleLoginUser}}>
+        <AuthContext.Provider value={{ signInFormData, setSignInFormData,signUpFormData, setSignUpFormData, handleRegisterUser, handleLoginUser, auth}}>
             {children}
         </AuthContext.Provider>
     );

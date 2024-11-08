@@ -12,8 +12,8 @@
         success: true,
         message: "User is authenticated",
         data: {
-            user
-        }
-    })
- })
+            user,
+        },
+    });
+ });
  module.exports = router;

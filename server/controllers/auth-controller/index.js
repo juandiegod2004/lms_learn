@@ -35,7 +35,7 @@ const loginUser = async(req, res) => {
     if(!checkUser || !(await bcrypt.compare(password, checkUser.password))){
         return res.status(401).json({
             success : false,
-            message : "Invalid credentials"
+            message : "Invalid credentials",
         });
     }
     const accessToken = jwt.sign({
@@ -43,7 +43,7 @@ const loginUser = async(req, res) => {
         userName: checkUser.userName,
         userEmail: checkUser.userEmail,
         role: checkUser.role
-    }, 'JWT_SECRET', {expiresIn : '120m'})
+    }, "JWT_SECRET", {expiresIn : '120m'})
 
     res.status(200).json({
         success : true,
@@ -59,6 +59,4 @@ const loginUser = async(req, res) => {
         },
     });
 };
-
-const checkAuth = 
-module.exports = {registerUser, loginUser};
+module.exports = {registerUser, loginUser };
